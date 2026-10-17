@@ -1,12 +1,12 @@
 # Ignore Python cache files and environment files
-.env
+.env*
+!.env.example
 .venv
-.pytest_cache
+__pycache__/
 # Ignore data directory
 data/
 # Ignore dbt build output
 target/
-logs/
 dbt_packages/
 # Ignore Airflow logs
 logs/
