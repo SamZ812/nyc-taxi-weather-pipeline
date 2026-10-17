@@ -3,12 +3,13 @@
 !.env.example
 .venv
 __pycache__/
+.pytest_cache/
 # Ignore data directory
 data/
 # Ignore dbt build output
 target/
 dbt_packages/
-# Ignore Airflow logs
+# Ignore tool logs (dbt, Airflow, etc.)
 logs/
 # Ignore Editor and OS junk files
 .vscode/
