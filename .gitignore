@@ -1,0 +1,15 @@
+# Ignore Python cache files and environment files
+.env
+.venv
+.pytest_cache
+# Ignore data directory
+data/
+# Ignore dbt build output
+target/
+logs/
+dbt_packages/
+# Ignore Airflow logs
+logs/
+# Ignore Editor and OS junk files
+.vscode/
+.DS_Store
