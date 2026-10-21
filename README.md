@@ -11,3 +11,13 @@ Using this project with the purpose of teaching myself the technologies I don't 
 7. Postgres
 8. Metabase
 9. Airflow for orchestration
+
+## Running locally
+
+Requires Docker with Compose.
+
+```bash
+cp .env.example .env      # then edit the values
+docker compose up -d
+docker compose ps         # wait for "healthy"
+```
