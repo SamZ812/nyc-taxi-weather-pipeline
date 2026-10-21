@@ -7,7 +7,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}"]
+      test: ["CMD", "pg_isready", "-U", "${POSTGRES_USER}", "-p", "5432"]
       interval: 10s
       timeout: 5s
       retries: 5
