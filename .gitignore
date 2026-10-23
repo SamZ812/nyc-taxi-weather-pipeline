@@ -14,3 +14,5 @@ logs/
 # Ignore Editor and OS junk files
 .vscode/
 .DS_Store
+# build metadata
+*.egg-info/
