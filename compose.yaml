@@ -15,6 +15,21 @@ services:
       - "${POSTGRES_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  garage:
+    image: dxflrs/garage:v2.4.1
+    restart: unless-stopped
+    ports:
+      - "${GARAGE_S3_API_PORT}:3900"
+      - "${GARAGE_ADMIN_API_PORT}:3903"
+    environment:
+      GARAGE_RPC_SECRET: ${GARAGE_RPC_SECRET}
+      GARAGE_ADMIN_TOKEN: ${GARAGE_ADMIN_TOKEN}
+    volumes:
+      - ./garage.toml:/etc/garage.toml:ro
+      - garage_meta:/var/lib/garage/meta
+      - garage_data:/var/lib/garage/data
 
 volumes:
   postgres_data:
+  garage_data:
+  garage_meta:
