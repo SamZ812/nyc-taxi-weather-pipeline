@@ -27,16 +27,18 @@ def test_build_source_url(year, month, expected):
     Verify that url gets created with correct source format
     """
     assert build_source_url(year, month) == expected
-## 
-## @pytest.mark.parametrize(
-##         ("s3_client", "bucket_name", "s3_key", "expected"),
-##         [
-##             ("s3_client", "raw", "")
-##         ]
-## )
-## def test_file_exists_in_s3_returns_true_when_file_is_present(s3_client):
-##     bucket_name = "my-test-bucket"
-##     s3_key = "/my_file.txt"
-## 
-##     s3_client.create_bucket(Bucket=bucket_name)
-##     s3_client.put_object(Bucket=bucket_name, Key=s3_key, Body = b"hello")
+
+def test_file_exists_in_s3_returns_true_when_file_is_present(s3_client):
+    bucket_name = "raw"
+    s3_key = "my_file.txt"
+
+    s3_client.put_object(Bucket=bucket_name, Key=s3_key, Body=b"hello")
+
+    assert file_exists_in_s3(s3_client, bucket_name, s3_key) is True
+
+def test_file_exists_in_s3_returns_false_when_file_is_missing(s3_client):
+    bucket_name = "raw"
+    s3_key = "my_file.txt"
+
+    s3_client.create_bucket(Bucket=bucket_name)
+    assert file_exists_in_s3(s3_client, bucket_name, s3_key) is False
